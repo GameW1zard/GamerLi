@@ -1,4 +1,5 @@
 # myGamerAlmanac
+![MIT License](https://img.shields.io/badge/license-MIT-important)
 
 ## Description
 
@@ -17,6 +18,8 @@ This is a full stack application that allows users to create an account and log 
 ## Usage
 
 ## License
+Permission to use this application is granted under the MIT license.
+Click on the link for more information: [MIT License Information](https://opensource.org/licenses/MIT)
 
 ## Contributors
 Riven, Tomas, Trevor, Mohammed
