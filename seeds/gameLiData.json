@@ -1,0 +1,32 @@
+[
+    {
+        "platform": "PC (gamers don't use Macs)",
+        "game": "",
+        "genre": "",
+        "rating": ""
+    },
+    {
+        "platform": "Xbox",
+        "game": "",
+        "genre": "",
+        "rating":"" 
+    },
+    {
+        "platform": "Playstation",
+        "game": "",
+        "genre": "",
+        "rating": ""
+    },
+    {
+        "platform": "Nintendo",
+        "game": "",
+        "genre": "",
+        "rating": ""
+    },
+    {
+        "platform": "'Mobile'",
+        "game": "",
+        "genre": "",
+        "rating": ""
+    }
+]
