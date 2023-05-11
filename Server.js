@@ -10,5 +10,5 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 
 const hbs = expressHandlebars.create({});
-
+t 
 // Inform Express.js on which template engine to use
