@@ -8,6 +8,7 @@ const expressHandlebars = require('express-handlebars');
 
 const session = require('express-session');
 
+const SequelizeStore = require('connect-session-sequelize')(session.Store); // Initializes sequelize with session store for connecting to database and bake cookies.
 
 const app = express();
 
