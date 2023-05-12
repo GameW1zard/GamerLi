@@ -14,7 +14,16 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-
+// Setting up bare-bone conneection to database and session store; will be updated later as we add models and routes
+const sess = {
+    secret: '',
+    cookie: {},
+    resave: '',
+    saveUninitialized: '',
+    store: new SequelizeStore({
+        db: sequelize
+    })
+};
 
 // Set up Handlebars.js engine with custom helpers
 
