@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Me</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</head>
+<body>
+  <div id="about-me"></div>
+
+  <script id="about-template" type="text/x-handlebars-template">
+    {{#each people}}
+      <div class="person">
+        <h2>{{name}}</h2>
+        <p><strong>Age:</strong> {{age}}</p>
+        <p><strong>Occupation:</strong> {{occupation}}</p>
+        <p><strong>Bio:</strong> {{bio}}</p>
+      </div>
+    {{/each}}
+  </script>
+
+  <script>
+    // Data for five people
+    var data = {
+      people: [
+        {
+          name: "Riven",
+          age: 20,
+          occupation: "text",
+          bio: "text",
+        },
+        {
+          name: "Tomas",
+          age: 20,
+          occupation: "text",
+          bio: "text",
+        },        {
+          name: "Trevor",
+          age: 20,
+          occupation: "text",
+          bio: "text",
+        },        {
+          name: "Mohammed",
+          age: 20,
+          occupation: "text",
+          bio: "text",
+        },        {
+          name: "??",
+          age: 20,
+          occupation: "text",
+          bio: "text",
+        },
+      ]
+    };
+
+    // Compile the Handlebars template
+    var template = Handlebars.compile(document.getElementById("about-template").innerHTML);
+
+    // Render the template with the data
+    var rendered = template(data);
+
+    // Insert the rendered HTML into the page
+    document.getElementById("about-me").innerHTML = rendered;
+  </script>
+</body>
+</html>
