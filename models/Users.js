@@ -7,10 +7,10 @@ class Users extends Model {}
 Users.init(
     {
         id: {
-            type: DataTypes.UUID,
-            defaultvalue: DataTypes.UUIDV4,
+            type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         user_name: {
             type: DataTypes.STRING,
@@ -19,9 +19,11 @@ Users.init(
     },
     {
         sequelize,
-        timestaps: false,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'Users'
     }
-)
+);
+
+module.exports = Users;

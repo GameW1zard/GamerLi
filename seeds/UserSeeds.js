@@ -1,11 +1,9 @@
-const { Users } = require('../models');
+const Users = require('../models/Users.js');
 
-const userData = [
-  {
+const userData = {
     user_name: 'GameW1zard',
-  }
-];
+  };
 
-const seedUsers = () => Users.bulkCreate(userData);
+const seedUsers = () => Users.create(userData);
 
 module.exports = seedUsers;

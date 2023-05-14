@@ -26,14 +26,14 @@ Games.init(
         console_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'console',
+                model: 'Consoles',
                 key: 'id'
             }
         },
         user_id: {
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'Users',
                 key: 'id'
             }
         }
@@ -42,9 +42,11 @@ Games.init(
     },
     {
         sequelize,
-        timestaps: false,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'Games'
     }
-)
+);
+
+module.exports = Games;
