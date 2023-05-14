@@ -2,18 +2,21 @@
 <html>
 <head>
   <title>About Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 </head>
 <body>
-  <div id="about-me"></div>
+  <div id="about-me" class="container"></div>
 
   <script id="about-template" type="text/x-handlebars-template">
     {{#each people}}
-      <div class="person">
-        <h2>{{name}}</h2>
-        <p><strong>Age:</strong> {{age}}</p>
-        <p><strong>Occupation:</strong> {{occupation}}</p>
-        <p><strong>Bio:</strong> {{bio}}</p>
+      <div class="person card mb-3">
+        <div class="card-body">
+          <h2 class="card-title">{{name}}</h2>
+          <p class="card-text"><strong>Age:</strong> {{age}}</p>
+          <p class="card-text"><strong>Occupation:</strong> {{occupation}}</p>
+          <p class="card-text"><strong>{{bio}}</strong></p>
+        </div>
       </div>
     {{/each}}
   </script>
