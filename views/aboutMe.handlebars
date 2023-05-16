@@ -1,0 +1,12 @@
+<div class="container">
+  {{#each people}}
+    <div class="person card mb-3">
+      <div class="card-body">
+        <h2 class="card-title">{{this.name}}</h2>
+        <p class="card-text"><strong>Age:</strong> {{this.age}}</p>
+        <p class="card-text"><strong>Occupation:</strong> {{this.occupation}}</p>
+        <p class="card-text"><strong>Bio:</strong> {{this.bio}}</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
