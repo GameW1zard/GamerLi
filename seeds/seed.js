@@ -1,17 +1,19 @@
-const sequelize = require('../config/connection');
-const { GameLi } = require('../models');
+const seedusers = require('./UserSeeds.js');
+const seedConsoles = require('./ConsoleSeeds.js');
+const seedGames = require('./GameSeeds.js');
 
-const gameLiData = require('./gameLiData.json');
+const sequelize = require('../config/connection.js');
 
-const seedDatabase = async () => {
+
+async function seedAll() {
     await sequelize.sync({ force: true });
-    
-    await GameLi.bulkCreate(gameLiData, {
-        individualHooks: true,
-        returning: true,
-    });
-    
-    process.exit(0);
+    console.log('\n----- DATABASE SYNCED -----\n');
+    await seedusers();
+    console.log('\n----- USERS SEEDED -----\n');
+    await seedConsoles();
+    console.log('\n----- CONSOLES SEEDED -----\n');
+    await seedGames();
+    console.log('\n----- GAMES SEEDED -----\n');
 }
 
-seedDatabase();
+seedAll();
