@@ -17,10 +17,10 @@ const PORT = process.env.PORT || 3001;
 // Setting up bare-bone conneection to database and session store; will be updated later as we add models and routes
 
 const sess = { // This is the configuration object for the session middleware
-    secret: '',
+    secret: 'secret',
     cookie: {/* Add options here */},
-    resave: '',
-    saveUninitialized: '',
+    resave: 'false',
+    saveUninitialized: 'true',
     store: new SequelizeStore({
         db: sequelize
     })

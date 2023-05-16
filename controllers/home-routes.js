@@ -1,13 +1,14 @@
 /* As the project progresses, we will add more models to the require statement */
 
 const router = require('express').Router();
-const {/* Add models here */ } = require('../models');
+const { Users } = require('../models');
 
-// GET all models for homepage
+// Redirect to homepage if user is not logged in
 router.get('/', async (req, res) => {
     try {
-        const {/* Add models here */ } = await {/* Add models here */ }.findAll({
-            // Add attributes here
+        const userData = await Users.findAll({
+            attributes: { exclude: ['password'] },
+            order: [['name', 'ASC']],
         });
 
         const {/* Add models here */ } = {/* Add models here */ }.map((model) => model.get({ plain: true }));
