@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>GamerLI Library</title>
+	<!-- CSS Import -->
+	<link rel="stylesheet" href="library.css" />
+	<!-- End of CSS Import -->
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+	<!-- End of Fonts -->
+</head>
+<body>
+	<header>
+        <h2 class="logo">GamerLI</h2>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <button class="btnLogin-popup">Logout</button>
+        </nav>
+    </header>
+
+
+
+	<!-- App Wrapper -->
+	<main class="app">
+		<!-- Greeting -->
+		<div>
+		<section class="greeting">
+			<h2 class="title">
+				What's up, <input type="text" id="name" placeholder="Name here" />
+			</h2>
+		</section>
+		</div>
+		<!-- End of Greeting -->
+		
+		<!-- New Todo -->
+		<section class="create-todo">
+			<h3>Video Game Library</h3>
+			<form id="new-todo-form">
+				<h4>Video Game Name </h4>
+				<input 
+					type="text" 
+					placeholder="e.g. Mario Kart"
+					name="content"
+					id="content" />
+				
+				<h4>Pick a Console</h4>
+				<div class="options">
+					<label>
+						<input type="radio" 
+						name="category" 
+						id="category1"
+						 value="PS" /> 
+						<span class="bubble business"></span>
+						<div>PlayStation</div>
+					</label>
+					<label>
+						<input type="radio" 
+						name="category" 
+						id="category2"
+						value="personal" />
+						<span class="bubble personal"></span>
+						<div>Xbox</div>
+					</label>
+					<label>
+						<input type="radio" 
+						name="category" 
+						id="category3" 
+						value="Pc" />
+						<span class="bubble PC"></span>
+						<div>PC</div>
+					</label>
+					<label>
+						<input type="radio" 
+						name="category" 
+						id="category4" 
+						value="Nintendo" />
+						<span class="bubble nintendo"></span>
+						<div>Nintendo</div>
+					</label>
+				</div>
+
+				<input type="submit" value="Add Video Game" />
+			</form>
+		</section>
+		<!-- End of New Todo -->
+
+		<!-- Todo List -->
+		<section class="todo-list">
+			<h3>Video Game library</h3>
+			<div class="list" id="todo-list"></div>
+		</section>
+		<!-- End of Todo List -->
+
+	</main>
+	<!-- End of App Wrapper -->
+
+	<!-- JS Import -->
+	<script src="main.js"></script>
+	<!-- End of JS Import -->
+</body>
+</html>
