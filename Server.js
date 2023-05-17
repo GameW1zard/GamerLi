@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const sequelize = require('./config/connection');
 const expressHandlebars = require('express-handlebars');
-const routes = require('./routes');
+const routes = require('./routes/index.js');
 const hbs = expressHandlebars.create({ views });
 const session = require('express-session');
 
@@ -28,6 +28,8 @@ app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use(routes);
 
