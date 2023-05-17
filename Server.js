@@ -106,6 +106,11 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
+// Route to /mylibrary
+app.get('/mylibrary', (req, res) => {
+  res.render('mylibrary');
+});
+
 //api routes
 app.use(routes);
 app.listen (PORT, function (){
