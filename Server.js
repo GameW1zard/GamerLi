@@ -130,7 +130,7 @@ app.get('/register', (req, res) => {
 
 // Route to /mylibrary
 app.get('/mylibrary', (req, res) => {
-  res.render('mylibrary');
+    res.render('mylibrary');
 });
 
 //api routes
@@ -139,18 +139,6 @@ app.listen(PORT, function () {
     console.log(`App listening on port ${PORT}!`);
 
 });
-
-
-// Set up Handlebars.js engine with custom helpers
-
-
-
-
-
-
-// Inform Express.js on which template engine to use
-
-
 
 
 // sequelize.sync() operation will create and run the tables in the database based on the models defined. If the tables already exist, it will not re-create them unless you pass in { force: true } as an argument, which will force the sync operation to drop the table(s) before re-creating them.
