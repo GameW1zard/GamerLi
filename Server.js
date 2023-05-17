@@ -1,25 +1,22 @@
 const path = require('path');
-
 const express = require('express');
-
 const sequelize = require('./config/connection');
-
 const expressHandlebars = require('express-handlebars');
 const routes = require('./routes');
-
+const hbs = expressHandlebars.create({ views });
 const session = require('express-session');
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store); // Initializes sequelize with session store for connecting to database and bake cookies.
+// Initializes sequelize 'store' with express-session for connecting and baking cookies
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-// Setting up bare-bone conneection to database and session store; will be updated later as we add models and routes
-
-const sess = { // This is the configuration object for the session middleware
+ // This is the object the connect-express-session middleware links to the sequelize-store middlewar
+const sess = {
     secret: 'secret',
-    cookie: {/* Add options here */ },
+    cookie: { },
     resave: 'false',
     saveUninitialized: 'true',
     store: new SequelizeStore({
@@ -28,19 +25,17 @@ const sess = { // This is the configuration object for the session middleware
 };
 
 
-//middleware
-
-app.use(session(sess))
+// Express-session & sequelize-store middleware
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(routes);
 
 // Set Handlebars as the view engine
-const hbs = expressHandlebars.create({});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-
-// Setup static folder
 
 
 // Data for five people
@@ -93,52 +88,6 @@ const data = {
         },
     ]
 };
-
-// Route to /homepage
-app.get('/', (req, res) => {
-    res.render('homePage');
-});
-// Route to /homepage
-app.get('/homePage', (req, res) => {
-    res.render('homePage');
-});
-
-// Route to /login
-app.get('/logIn', (req, res) => {
-    res.render('logIn');
-});
-
-// Route to /aboutme
-app.get('/aboutMe', (req, res) => {
-    res.render('aboutMe', data);
-});
-
-// Route to /contact
-app.get('/contact', (req, res) => {
-    res.render('contact', data);
-});
-
-// Route to /services
-app.get('/services', (req, res) => {
-    res.render('services');
-});
-
-// Route to /register
-app.get('/register', (req, res) => {
-    res.render('register');
-});
-
-// Route to /mylibrary
-app.get('/mylibrary', (req, res) => {
-    res.render('mylibrary');
-});
-
-//api routes
-app.use(routes);
-app.listen(PORT, function () {
-    console.log(`App listening on port ${PORT}!`);
-
-});
 
 
 // sequelize.sync() operation will create and run the tables in the database based on the models defined. If the tables already exist, it will not re-create them unless you pass in { force: true } as an argument, which will force the sync operation to drop the table(s) before re-creating them.
