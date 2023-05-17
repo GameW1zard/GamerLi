@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Console } = require('../models');
+const { Games } = require('../models');
 
 // Redirect to homepage if user is not logged in
 router.get('/', async (req, res) => {
     try {
-        const consoleData = await Console.findAll({
+        const gamesData = await Games.findAll({
             attributes: { exclude: ['password'] },
             order: [['name', 'ASC']],
         });
@@ -64,5 +64,3 @@ router.get('/model/attribute/:attribute', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-module.exports = router;
