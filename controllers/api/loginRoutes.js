@@ -1,34 +1,33 @@
 const router = require('express').Router();
 const { Users } = require('../../models');
 
-// Login route
 router.post('/login', async (req, res) => {
     try {
-        const userData = await Users.findOne({ where: { email: req.body.email } });
+        const userData = await Users.findOne({ where: { user_name: req.body.user_name } });
 
         if (!userData) {
             res
                 .status(400)
-                .json({ message: 'Wrong email or password, please try again!' });
+                .json({ message: 'Incorrect username and/or password!' });
             return;
         }
 
-        const validPassword = await userData.checkPassword(req.body.password);
+        const validpassword = await userData.checkPassword(req.body.password);
 
-        if (!validPassword) {
-            res
-                .status(400)
-                .json({ message: 'Wrong email or password, please try again!' });
+        if (!validpassword) {
+        res
+            .status(400)
+            .json({ message: 'Incorrect username and/or password!' });
             return;
         }
 
+        // Requests session object to save user data to cookie
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            req.session.user_name = userData.user_name;
             req.session.logged_in = true;
         });
 
     } catch (err) {
-        console.log(err);
         res.status(400).json(err);
     }
 });
@@ -43,3 +42,5 @@ router.post('/logout', (req, res) => {
         res.status(400).end();
     }
 });
+
+module.exports = router;
