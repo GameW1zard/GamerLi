@@ -1,5 +1,6 @@
 const router = require ('express').Router();
 const { Users, Consoles, Games } = require ('../../models');
+const bcrypt = require('bcrypt');
 
 router.post('/', async function (req,res){
     try {
@@ -9,12 +10,15 @@ router.post('/', async function (req,res){
             return;
         }
 
-        // const validpassword = await userdata.checkPassword(req.body.password);
-
-        if (userdata.password != req.body.password) {
+        const validpassword = await userdata.checkPassword(req.body.password);
+        if (!validpassword) {
             res.status(400).json({message: 'Incorrect password'});
             return;
-        }
+        };
+        // if (userdata.password != req.body.password) {
+        //     res.status(400).json({message: 'Incorrect password'});
+        //     return;
+        // }
         res.json({user: userdata, message: 'Login check successful!'});
     } catch (err) {
         res.status(400).json(err);
