@@ -1,18 +1,19 @@
 const loginHandler = async (event) => {
     event.preventDefault();
     // Collect values from the login form
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
+    const user_name = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
 
-    if (email && password) {
-        const respons = await fetch('/api/users/login', {
+    if (user_name && password) {
+        const respons = await fetch('/api/login', {
             method: 'POST',
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ user_name, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (respons.ok) {
-            document.location.replace('/');
+            console.log("hello")
+           document.location.replace('/');
         } else {
             alert('Oops! Something went wrong. Please try again!');
         }
@@ -22,3 +23,5 @@ const loginHandler = async (event) => {
 document
     .querySelector('#login-form')
     .addEventListener('submit', loginHandler);
+
+
