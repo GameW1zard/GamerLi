@@ -1,4 +1,7 @@
 // Data for five people
+const router = require('express').Router();
+const withAuthorization = require('../utils/auth');
+
 const data = {
     people: [
         {
@@ -50,36 +53,46 @@ const data = {
 };
 
 // Route to /homepage
-app.get('/homePage', (req, res) => {
+router.get('/', (req, res) => {
     res.render('homePage');
 });
 
 // Route to /login
-app.get('/logIn', (req, res) => {
+router.get('/logIn', (req, res) => {
     res.render('logIn');
 });
 
 // Route to /aboutme
-app.get('/aboutMe', (req, res) => {
+router.get('/aboutMe', (req, res) => {
     res.render('aboutMe', data);
 });
 
 // Route to /contact
-app.get('/contact', (req, res) => {
+router.get('/contact', (req, res) => {
     res.render('contact', data);
 });
 
 // Route to /services
-app.get('/services', (req, res) => {
+router.get('/services', (req, res) => {
     res.render('services');
 });
 
 // Route to /register
-app.get('/register', (req, res) => {
+router.get('/register', (req, res) => {
     res.render('register');
 });
 
 // Route to /mylibrary
-app.get('/mylibrary', (req, res) => {
+router.get('/mylibrary', withAuthorization, (req, res) => {
     res.render('mylibrary');
 });
+
+router.get('/login',(req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
+
+module.exports = router;
