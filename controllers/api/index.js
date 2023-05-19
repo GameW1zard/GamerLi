@@ -2,7 +2,7 @@ const router = require('express').Router();
 const UserRoutes = require('./UserTable');
 const ConsoleRoutes = require('./ConsoleTable');
 const GameRoutes = require('./GamesTable');
-const Login = require('./Login');
+const Login = require('./loginRoutes');
 
 router.use('/UserTable', UserRoutes);
 router.use('/ConsoleTable', ConsoleRoutes);

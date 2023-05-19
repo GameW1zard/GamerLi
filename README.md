@@ -1,4 +1,4 @@
-# myGamerAlmanac
+# GamerLi
 ![MIT License](https://img.shields.io/badge/license-MIT-important)
 
 ## Description
