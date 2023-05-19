@@ -87,11 +87,7 @@ router.get('/mylibrary', withAuthorization, (req, res) => {
     res.render('mylibrary');
 });
 
-// router.get('/mylibrary/:id', withAuthorization, (req, res) => {
-//     res.render('mylibrary');
-// });
-
-router.get('/login', (req, res) => {
+router.get('/login',(req, res) => {
     if (req.session.logged_in) {
         res.redirect('/');
         return;
