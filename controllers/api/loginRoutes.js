@@ -25,9 +25,11 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_name = userData.user_name;
             req.session.logged_in = true;
+            console.log('login sucsesful', req.session)
         });
-        res.status(200).json({ user: userData, message: 'Login check successful!' })
+        res.status(200).json()
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });

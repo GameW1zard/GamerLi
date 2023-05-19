@@ -15,9 +15,9 @@ const PORT = process.env.PORT || 3001;
  // This is the object the connect-express-session middleware links to the sequelize-store middlewar
 const sess = {
     secret: 'secret',
-    cookie: { },
-    resave: 'false',
-    saveUninitialized: 'true',
+    cookie: {httpOnly: false, secure: false, maxAge: 24 * 60 * 60 * 1000,},
+    resave: true,
+    saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize
     })
@@ -25,6 +25,7 @@ const sess = {
 
 // Express-session & sequelize-store middleware
 app.use(session(sess));
+console.log(session(sess))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -41,3 +42,4 @@ app.set('view engine', 'handlebars');
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening on ${PORT}. Visit http://localhost:${PORT} in your browser.`));
 });
+//console.log(sequelize.sync({ force: false }))
