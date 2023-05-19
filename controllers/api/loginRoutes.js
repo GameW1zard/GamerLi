@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { Users } = require('../../models');
 
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const userData = await Users.findOne({ where: { user_name: req.body.user_name } });
-
+        console.log('update user data', userData)
         if (!userData) {
             res
                 .status(400)
@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
             req.session.user_name = userData.user_name;
             req.session.logged_in = true;
         });
-
+        res.status(200).json({ user: userData, message: 'Login check successful!' })
     } catch (err) {
         res.status(400).json(err);
     }

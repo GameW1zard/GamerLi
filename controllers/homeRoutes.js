@@ -1,5 +1,6 @@
 // Data for five people
 const router = require('express').Router();
+const withAuthorization = require('../utils/auth');
 
 const data = {
     people: [
@@ -52,7 +53,7 @@ const data = {
 };
 
 // Route to /homepage
-router.get('/homePage', (req, res) => {
+router.get('/', (req, res) => {
     res.render('homePage');
 });
 
@@ -82,10 +83,16 @@ router.get('/register', (req, res) => {
 });
 
 // Route to /mylibrary
-router.get('/mylibrary', (req, res) => {
+router.get('/mylibrary', withAuthorization, (req, res) => {
     res.render('mylibrary');
 });
 
-
+router.get('/login',(req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
 
 module.exports = router;
