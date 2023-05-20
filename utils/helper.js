@@ -1,3 +1,4 @@
+const handlebars = require("handlebars");
 // Helper to display and update consoles and games
 handlebars.registerHelper("displayConsolesAndGames", (consoles, games) => {
     let content = "<ul>";
