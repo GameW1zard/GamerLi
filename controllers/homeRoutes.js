@@ -54,12 +54,12 @@ const data = {
 
 // Route to /homepage
 router.get('/', (req, res) => {
-    res.render('homePage');
+    res.render('homepage');
 });
 
 // Route to /login
 router.get('/logIn', (req, res) => {
-    res.render('logIn');
+    res.render('login');
 });
 
 // Route to /aboutme
@@ -84,7 +84,7 @@ router.get('/register', (req, res) => {
 
 // Route to /mylibrary
 router.get('/mylibrary', withAuthorization, (req, res) => {
-    res.render('mylibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name});
+    res.render('myLibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name});
 });
 
 router.get('/login',(req, res) => {
