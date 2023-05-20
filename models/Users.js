@@ -25,10 +25,17 @@ Users.init(
     },
     {
         hooks: {
+            beforeBulkCreate: async (newUserData) => {
+                console.log(newUserData[0].dataValues.password);
+                for (let i = 0; i < newUserData.length; i++) {
+                newUserData[i].dataValues.password = await bcrypt.hash(newUserData[i].dataValues.password, 10);
+                }return newUserData
+            },
             beforeCreate: async (newUserData) => {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
-            }},
+            }
+        },
         sequelize,
         timestamps: false,
         freezeTableName: true,

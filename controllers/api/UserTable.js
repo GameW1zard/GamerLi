@@ -12,7 +12,7 @@ router.get ('/', async function (req,res){
 router.get('/:id', async function (req,res){
     let resdata ={
         userdata: null,
-        consoles: [],
+        Consoles: [],
         games: []
     }
     let userdata = await Users.findOne({where: {id: req.params.id}})
@@ -23,7 +23,7 @@ router.get('/:id', async function (req,res){
 
     let consolefind = await Consoles.findAll({where: {user_id: req.params.id}})
     for (let c = 0, len = consolefind.length; c < len; c++) {
-        resdata.consoles[c] = await Consoles.findOne({where: {id: consolefind[c].id}})
+        resdata.Consoles[c] = await Consoles.findOne({where: {id: consolefind[c].id}})
     }
 
     let gamefind = await Games.findAll({where: {user_id: req.params.id}})

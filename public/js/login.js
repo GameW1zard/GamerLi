@@ -14,7 +14,7 @@ const loginHandler = async (event) => {
         if (respons.ok) {
             console.log("hello");
             // res.status(200).json()
-            document.location.replace('/');
+            document.location.replace('/mylibrary');
         } else {
             alert('Oops! Something went wrong. Please try again!');
         }
