@@ -38,6 +38,7 @@ app.use(routes);
 // Set Handlebars as the view engine
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
 
 // sequelize.sync() operation creates and runs tables in the database. It will not re-create them unless you pass in { force: true } as an argument, which will force the sync operation to drop pre-existing table(s) before re-creating them.
 sequelize.sync({ force: false }).then(() => {
