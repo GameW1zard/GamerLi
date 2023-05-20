@@ -54,7 +54,7 @@ const data = {
 
 // Route to /homepage
 router.get('/', (req, res) => {
-    res.render('homePage');
+    res.render('homepage');
 });
 
 // Route to /login

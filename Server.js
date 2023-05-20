@@ -15,9 +15,9 @@ const PORT = process.env.PORT || 3001;
  // This is the object the connect-express-session middleware links to the sequelize-store middlewar
 const sess = {
     secret: 'secret',
-    cookie: {httpOnly: false, secure: false, maxAge: 24 * 60 * 60 * 1000,},
-    resave: true,
-    saveUninitialized: true,
+    cookie: {},
+    resave: false,
+    saveUninitialized: false,
     store: new SequelizeStore({
         db: sequelize
     })
