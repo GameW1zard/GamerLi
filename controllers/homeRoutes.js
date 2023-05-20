@@ -84,15 +84,16 @@ router.get('/register', (req, res) => {
 
 // Route to /mylibrary
 router.get('/mylibrary', withAuthorization, (req, res) => {
-    res.render('mylibrary');
+    res.render('mylibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name});
 });
 
 router.get('/login',(req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/');
+    if (req.session.logged_in === true) {
+        // res.redirect('/mylibrary');
+        console.log('already logged in')
         return;
     }
-    res.render('login');
+    res.render('login',{loggedIn: req.session.logged_in});
 });
 
 module.exports = router;
