@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 // Set Handlebars as the view engine
-app.engine('handlebars', expressHandlebars(hbs));
+app.engine('handlebars', expressHandlebars({ defaultLayout: 'main',hbs }));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
