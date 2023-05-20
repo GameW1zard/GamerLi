@@ -4,7 +4,7 @@ const { Users } = require('../../models');
 router.post('/', async (req, res) => {
     try {
         const userData = await Users.findOne({ where: { user_name: req.body.user_name } });
-        
+
         if (!userData) {
             res
                 .status(400)
@@ -47,5 +47,3 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
-
-// res.render('myLibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name})

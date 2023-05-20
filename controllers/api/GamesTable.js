@@ -65,32 +65,3 @@ router.delete('/:id', async (req, res) => {
 
 module.exports = router;
 
-//     Games.create(req.body)
-//     .then(function (resdata){
-//         res.json(resdata);
-//     })
-//     .catch(function (err){
-//         res.json(err);
-//     });
-// })
-
-//     let resdata = await Games.findAll({where: {user_id: req.params.id, console_id: req.params.console_id}})
-//     .catch(function (err){
-//         res.json(err);
-//     });
-//     res.json(resdata);
-// });
-
-//     let resdata = await Games.findAll({where: {user_id: req.params.id}})
-//     .catch(function (err){
-//         res.json(err);
-//     });
-//     res.json(resdata);
-// });
-
-//     let resdata = await Games.findAll()
-//     .catch(function (err){
-//         res.json(err);
-//     });
-//     res.json(resdata);
-// });

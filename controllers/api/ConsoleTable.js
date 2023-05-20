@@ -47,26 +47,3 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
-
-//     let resdata = await Consoles.findAll()
-//     .catch(function (err){
-//         res.json(err);
-//     });
-//     res.json(resdata);
-// });
-
-//     let resdata = await Consoles.findAll({where: {user_id: req.params.id}})
-//     .catch(function (err){
-//         res.json(err);
-//     });
-//     res.json(resdata);
-// });
-
-//     Consoles.create(req.body)
-//     .then(function (resdata){
-//         res.json(resdata);
-//     })
-//     .catch(function (err){
-//         res.json(err);
-//     });
-// });
