@@ -98,5 +98,3 @@ const data = {
 };
 
 module.exports = router;
-
-res
