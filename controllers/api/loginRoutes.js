@@ -4,7 +4,7 @@ const { Users } = require('../../models');
 router.post('/', async (req, res) => {
     try {
         const userData = await Users.findOne({ where: { user_name: req.body.user_name } });
-        console.log('update user data', userData)
+        
         if (!userData) {
             res
                 .status(400)
@@ -21,8 +21,6 @@ router.post('/', async (req, res) => {
             return;
         }
 
-        // res.render('myLibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name})
-
         // Requests session object to save user data to cookie
         req.session.save(() => {
             req.session.user_name = userData.user_name;
@@ -30,7 +28,7 @@ router.post('/', async (req, res) => {
             console.log('login sucsesful', req.session)
             res.render('myLibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name})
         });
-        
+
     } catch (err) {
         console.log(err);
         res.status(400).json(err);
@@ -49,3 +47,5 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
+
+// res.render('myLibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name})

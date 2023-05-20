@@ -2,6 +2,51 @@
 const router = require('express').Router();
 const withAuthorization = require('../utils/auth');
 
+
+// Route to /homepage
+router.get('/', (req, res) => {
+    res.render('homePage');
+});
+
+// Route to /login
+router.get('/logIn', (req, res) => {
+    res.render('logIn');
+});
+
+// Route to /aboutme
+router.get('/aboutMe', (req, res) => {
+    res.render('aboutMe', data);
+});
+
+// Route to /contact
+router.get('/contact', (req, res) => {
+    res.render('contact', data);
+});
+
+// Route to /services
+router.get('/services', (req, res) => {
+    res.render('services');
+});
+
+// Route to /register
+router.get('/register', (req, res) => {
+    res.render('register');
+});
+
+// Route to /mylibrary
+router.get('/mylibrary', withAuthorization, (req, res) => {
+    res.render('mylibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name});
+});
+
+router.get('/login',(req, res) => {
+    if (req.session.logged_in === true) {
+        // res.redirect('/mylibrary');
+        console.log('already logged in')
+        return;
+    }
+    res.render('login',{loggedIn: req.session.logged_in});
+});
+
 const data = {
     people: [
         {
@@ -51,49 +96,5 @@ const data = {
         },
     ]
 };
-
-// Route to /homepage
-router.get('/', (req, res) => {
-    res.render('homePage');
-});
-
-// Route to /login
-router.get('/logIn', (req, res) => {
-    res.render('logIn');
-});
-
-// Route to /aboutme
-router.get('/aboutMe', (req, res) => {
-    res.render('aboutMe', data);
-});
-
-// Route to /contact
-router.get('/contact', (req, res) => {
-    res.render('contact', data);
-});
-
-// Route to /services
-router.get('/services', (req, res) => {
-    res.render('services');
-});
-
-// Route to /register
-router.get('/register', (req, res) => {
-    res.render('register');
-});
-
-// Route to /mylibrary
-router.get('/mylibrary', withAuthorization, (req, res) => {
-    res.render('mylibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name});
-});
-
-router.get('/login',(req, res) => {
-    if (req.session.logged_in === true) {
-        // res.redirect('/mylibrary');
-        console.log('already logged in')
-        return;
-    }
-    res.render('login',{loggedIn: req.session.logged_in});
-});
 
 module.exports = router;

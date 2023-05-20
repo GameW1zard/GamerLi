@@ -1,9 +1,10 @@
 const path = require('path');
+const helpers = require('./utils/helper');
 const express = require('express');
 const sequelize = require('./config/connection');
 const expressHandlebars = require('express-handlebars');
 const routes = require('./controllers');
-const hbs = expressHandlebars.create();
+const hbs = expressHandlebars.create({ helpers });
 const session = require('express-session');
 
 // Initializes sequelize 'store' with express-session for connecting and baking cookies
