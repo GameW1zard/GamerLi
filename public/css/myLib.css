@@ -23,3 +23,17 @@ ul {
 li {
   margin-bottom: 5px;
 }
+/* Styles for small screens */
+@media (max-width: 767px) {
+  /* CSS rules for small screens go here */
+}
+
+/* Styles for medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* CSS rules for medium screens go here */
+}
+
+/* Styles for large screens */
+@media (min-width: 1024px) {
+  /* CSS rules for large screens go here */
+}
