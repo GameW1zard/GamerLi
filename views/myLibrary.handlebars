@@ -1,8 +1,10 @@
 {{!-- views/myLibrary.handlebars --}}
 
+{{> myLibraryContent}}
+
 <div class="container-fluid" id="consoles">
   <div class="row">
-    <div class="column">
+    <div class="col">
       <h2>Consoles</h2>
       <ul>
         {{#each consoles}}
@@ -15,7 +17,7 @@
 
 <div class="container-fluid" id="games">
   <div class="row">
-    <div class="column">
+    <div class="col">
       <h2>Games</h2>
       <ul>
         {{#each games}}

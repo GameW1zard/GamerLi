@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Consoles } = require('../../models');
 
+// Route to retrieve all consoles
 router.get ('/', async (req,res) => {
     try {
         const consoles = await Consoles.findAll();
@@ -11,6 +12,7 @@ router.get ('/', async (req,res) => {
     }
 });
 
+// Route to retrieve a console by id and the game it is associated with
 router.get('/:id/:game_id', async (req, res) => {
     try {
         const userId = req.params.id;
@@ -24,7 +26,7 @@ router.get('/:id/:game_id', async (req, res) => {
 });
 
 
-
+// Route to add a console to the database
 router.post('/', async  (req, res) => {
     try {
         const newConsole = await Consoles.create(req.body);
@@ -35,6 +37,7 @@ router.post('/', async  (req, res) => {
     }
 });
 
+// Route to delete a console from the database
 router.delete('/:id', async (req, res) => {
     try {
         const consoleId = req.params.id;
