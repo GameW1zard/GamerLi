@@ -1,4 +1,3 @@
-// Data for five people
 const router = require('express').Router();
 const withAuthorization = require('../utils/auth');
 
