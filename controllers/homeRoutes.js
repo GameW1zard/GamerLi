@@ -1,6 +1,64 @@
 // Data for five people
 const router = require('express').Router();
 const withAuthorization = require('../utils/auth');
+const Consoles = require('../models/Consoles');
+
+
+// Route to /homepage
+router.get('/', (req, res) => {
+    res.render('homePage');
+});
+
+// Route to /login
+// router.get('/logIn', (req, res) => {
+//     res.render('myLibrary');
+// });
+
+// Route to /aboutme
+router.get('/aboutMe', (req, res) => {
+    res.render('aboutMe', data);
+});
+
+// Route to /contact
+router.get('/contact', (req, res) => {
+    res.render('contact', data);
+});
+
+// Route to /services
+router.get('/services', (req, res) => {
+    res.render('services');
+});
+
+// Route to /register
+router.get('/register', (req, res) => {
+    res.render('register');
+});
+
+// Route to /mylibrary
+router.get('/mylibrary', withAuthorization, async (req, res) => {
+    let consolefind = await Consoles.findAll({ where: { user_id: req.session.user_id } });
+    let consoles = [];
+    for (let i = 0; i < consolefind.length; i++) {
+        let tempdata = { console_name: consolefind[i].dataValues.console_name, id: consolefind[i].dataValues.id, user_id: req.session.user_id}
+        consoles.push(tempdata);
+    }
+
+    //console.log(consoles)
+    res.render('mylibrary', {
+        logged_in: req.session.logged_in,
+         user_id: req.session.user_id,
+          user_name: req.session.user_name,
+           consoles, farts: "farts"});
+});
+
+router.get('/login',(req, res) => {
+    if (req.session.logged_in === true) {
+        res.redirect('/mylibrary');
+        console.log('already logged in')
+        return;
+    }
+    res.render('login',{loggedIn: req.session.logged_in});
+});
 
 const data = {
     people: [
@@ -51,48 +109,5 @@ const data = {
         },
     ]
 };
-
-// Route to /homepage
-router.get('/', (req, res) => {
-    res.render('homePage');
-});
-
-// Route to /login
-router.get('/logIn', (req, res) => {
-    res.render('logIn');
-});
-
-// Route to /aboutme
-router.get('/aboutMe', (req, res) => {
-    res.render('aboutMe', data);
-});
-
-// Route to /contact
-router.get('/contact', (req, res) => {
-    res.render('contact', data);
-});
-
-// Route to /services
-router.get('/services', (req, res) => {
-    res.render('services');
-});
-
-// Route to /register
-router.get('/register', (req, res) => {
-    res.render('register');
-});
-
-// Route to /mylibrary
-router.get('/mylibrary', withAuthorization, (req, res) => {
-    res.render('mylibrary');
-});
-
-router.get('/login',(req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/');
-        return;
-    }
-    res.render('login');
-});
 
 module.exports = router;

@@ -1,0 +1,29 @@
+{{!-- views/myLibrary.handlebars --}}
+{{!< main}}
+
+{{!-- Content specific to My Library --}}
+{{#content "body"}}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Add Console</h1>
+                <form action="/api/ConsoleTable" method="POST">
+                    <input type="text" name="consoleName" placeholder="Console Name">
+                    <button type="submit">Add Console</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Add Game</h1>
+                <form action="/api/GamesTable" method="POST">
+                    <input type="text" name="gameName" placeholder="Game Name">
+                    <button type="submit">Add Game</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{/content}}

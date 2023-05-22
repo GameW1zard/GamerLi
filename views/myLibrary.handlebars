@@ -1,25 +1,28 @@
-<link rel="stylesheet" href="/css/myLib.css" type="text/css" />
-
-<div class="container">
-    <h1 class="my-4">My Game Library</h1>
-
-    <form class="mb-4">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter game name..." required>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Add Game</button>
-            </div>
-        </div>
-    </form>
-
-    <ul class="list-group">
-        <!-- Games will go here -->
-        <script id="game-template" type="text/x-handlebars-template">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{game}}
-                <button class="btn btn-danger">Remove</button>
-            </li>
-        </script>
-    </ul>
+<div class="container-fluid" id="consoles">
+  <div class="row">
+    <div class="column">
+      <h2>consoles</h2>
+      <ul id="consolesul">
+        {{#each consoles}}
+          <li data-consoleid={{this.id}} data-userid={{this.user_id}}>Console: {{this.console_name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>
-
+<button data-userid={{user_id}} type="button" class="btn btn-primary" id="addConsole">Add Console</button>
+<div class="container-fluid" id="games">
+  <div class="row">
+    <div class="column">
+      <h2>Games</h2>
+      <ul id="gamesul">
+        {{!-- {{#each games}}
+          <li>Game: {{this.game_name}}</li>
+        {{/each}} --}}
+      </ul>
+    </div>
+  </div>
+</div>
+<button data-userid={{user_id}} data-consoleid="" type="button" class="btn btn-primary" id="addGame">Add Game</button>
+<link rel="stylesheet" href="/css/myLib.css" type="text/css" />
+<script src="/js/myLib.js"></script>

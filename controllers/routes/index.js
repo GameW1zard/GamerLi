@@ -12,7 +12,7 @@
 const express = require('express');
 
 const hbRouter = require('./handlebarRoutes');
-const homeRouter = require('../controllers/homeRoutes');
+const homeRouter = require('../homeRoutes');
 
 const app = express();
 

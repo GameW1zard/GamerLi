@@ -1,34 +1,49 @@
 const router = require('express').Router();
-const { Users, Consoles } = require('../../models');
+const { Consoles } = require('../../models');
 
-router.get ('/', async function (req,res){
-    let resdata = await Consoles.findAll()
-    .catch(function (err){
-        res.json(err);
-    });
-    res.json(resdata);
+router.get ('/', async (req,res) => {
+    try {
+        const consoles = await Consoles.findAll();
+        res.status(200).json(consoles);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
 });
 
-//get consoles by user
-
-router.get ('/:id', async function (req,res){
-    let resdata = await Consoles.findAll({where: {user_id: req.params.id}})
-    .catch(function (err){
-        res.json(err);
-    });
-    res.json(resdata);
+router.get('/:id/:game_id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const gameId = req.params.game_id;
+        const consoles = await Consoles.findAll({ where: { user_id: userId, game_id: gameId } });
+        res.status(200).json(consoles);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
 });
 
-//create new console
 
-router.post('/', function (req,res){
-    Consoles.create(req.body)
-    .then(function (resdata){
-        res.json(resdata);
-    })
-    .catch(function (err){
-        res.json(err);
-    });
+
+router.post('/', async  (req, res) => {
+    try {
+        const newConsole = await Consoles.create(req.body);
+        res.status(200).json(newConsole);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const consoleId = req.params.id;
+        const deletedConsole = await Consoles.destroy({ where: { id: consoleId } });
+        res.status(200).json(deletedConsole);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
 });
 
 module.exports = router;

@@ -4,7 +4,7 @@ const { Users } = require('../../models');
 router.post('/', async (req, res) => {
     try {
         const userData = await Users.findOne({ where: { user_name: req.body.user_name } });
-        console.log('update user data', userData)
+
         if (!userData) {
             res
                 .status(400)
@@ -25,14 +25,34 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_name = userData.user_name;
             req.session.logged_in = true;
+            req.session.user_id = userData.id;
             console.log('login sucsesful', req.session)
+            res.render('myLibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name})
         });
-        res.status(200).json()
+
     } catch (err) {
         console.log(err);
         res.status(400).json(err);
     }
 });
+
+// router.post('/register', async (req, res) => {
+//     try {
+//         const userData = await Users.create(req.body);
+
+//         req.session.save(() => {
+//             req.session.user_name = userData.user_name;
+//             req.session.logged_in = true;
+//             req.session.user_id = userData.id;
+//             console.log('login sucsesful', req.session)
+//             document.location.replace('/mylibrary');
+//         });
+
+//     } catch (err) {
+//         console.log(err);
+//         res.status(400).json(err);
+//     }
+// });
 
 // Logout route
 router.post('/logout', (req, res) => {
