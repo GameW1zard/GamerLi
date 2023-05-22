@@ -31,4 +31,8 @@ function addGameToList(game) {
     gameul.appendChild(li);
 }
 
+function addconsoletodb () {
+    
+}
+
 // addGameToList("Halo");

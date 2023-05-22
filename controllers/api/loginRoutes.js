@@ -36,6 +36,24 @@ router.post('/', async (req, res) => {
     }
 });
 
+// router.post('/register', async (req, res) => {
+//     try {
+//         const userData = await Users.create(req.body);
+
+//         req.session.save(() => {
+//             req.session.user_name = userData.user_name;
+//             req.session.logged_in = true;
+//             req.session.user_id = userData.id;
+//             console.log('login sucsesful', req.session)
+//             document.location.replace('/mylibrary');
+//         });
+
+//     } catch (err) {
+//         console.log(err);
+//         res.status(400).json(err);
+//     }
+// });
+
 // Logout route
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {

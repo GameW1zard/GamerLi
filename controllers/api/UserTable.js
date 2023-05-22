@@ -32,12 +32,30 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const newUser = await Users.create(req.body);
-        res.status(201).json(newUser);
+        const userData = await Users.create(req.body);
+
+        req.session.save(() => {
+            req.session.user_name = userData.user_name;
+            req.session.logged_in = true;
+            req.session.user_id = userData.id;
+            console.log('login sucsesful', req.session)
+            
+        });
+        res.status(201).json(userData);
     } catch (err) {
-        res.status(500).json({ error: 'Failed to create user' });
         console.log(err);
+        res.status(400).json(err);
     }
 });
+
+// router.post('/', async (req, res) => {
+//     try {
+//         const newUser = await Users.create(req.body);
+//         res.status(201).json(newUser);
+//     } catch (err) {
+//         res.status(500).json({ error: 'Failed to create user' });
+//         console.log(err);
+//     }
+// });
 
 module.exports = router;
