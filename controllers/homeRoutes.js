@@ -39,11 +39,11 @@ router.get('/mylibrary', withAuthorization, async (req, res) => {
     let consolefind = await Consoles.findAll({ where: { user_id: req.session.user_id } });
     let consoles = [];
     for (let i = 0; i < consolefind.length; i++) {
-        let tempdata = { console_name: consolefind[i].dataValues.console_name, id: consolefind[i].dataValues.id}
+        let tempdata = { console_name: consolefind[i].dataValues.console_name, id: consolefind[i].dataValues.id, user_id: req.session.user_id}
         consoles.push(tempdata);
     }
 
-    console.log(consoles)
+    //console.log(consoles)
     res.render('mylibrary', {
         logged_in: req.session.logged_in,
          user_id: req.session.user_id,
