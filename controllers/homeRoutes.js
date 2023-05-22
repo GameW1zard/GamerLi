@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
 // Route to /login
 router.get('/logIn', (req, res) => {
-    res.render('logIn');
+    res.render('myLibrary');
 });
 
 // Route to /aboutme
