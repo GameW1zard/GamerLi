@@ -1,6 +1,7 @@
 // Data for five people
 const router = require('express').Router();
 const withAuthorization = require('../utils/auth');
+const Consoles = require('../models/Consoles');
 
 
 // Route to /homepage
@@ -9,9 +10,9 @@ router.get('/', (req, res) => {
 });
 
 // Route to /login
-router.get('/logIn', (req, res) => {
-    res.render('myLibrary');
-});
+// router.get('/logIn', (req, res) => {
+//     res.render('myLibrary');
+// });
 
 // Route to /aboutme
 router.get('/aboutMe', (req, res) => {
@@ -34,8 +35,20 @@ router.get('/register', (req, res) => {
 });
 
 // Route to /mylibrary
-router.get('/mylibrary', withAuthorization, (req, res) => {
-    res.render('mylibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name});
+router.get('/mylibrary', withAuthorization, async (req, res) => {
+    let consolefind = await Consoles.findAll({ where: { user_id: req.session.user_id } });
+    let consoles = [];
+    for (let i = 0; i < consolefind.length; i++) {
+        let tempdata = { console_name: consolefind[i].dataValues.console_name, id: consolefind[i].dataValues.id}
+        consoles.push(tempdata);
+    }
+
+    console.log(consoles)
+    res.render('mylibrary', {
+        logged_in: req.session.logged_in,
+         user_id: req.session.user_id,
+          user_name: req.session.user_name,
+           consoles, farts: "farts"});
 });
 
 router.get('/login',(req, res) => {

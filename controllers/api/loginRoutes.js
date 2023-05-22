@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Users } = require('../../models');
 
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const userData = await Users.findOne({ where: { user_name: req.body.user_name } });
 
@@ -25,6 +25,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_name = userData.user_name;
             req.session.logged_in = true;
+            req.session.user_id = userData.id;
             console.log('login sucsesful', req.session)
             res.render('myLibrary', {logged_in: req.session.logged_in, user_name: req.session.user_name})
         });
