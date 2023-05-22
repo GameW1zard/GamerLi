@@ -25,7 +25,7 @@ const sess = {
 
 // Express-session & sequelize-store middleware
 app.use(session(sess));
-console.log(session(sess))
+//console.log(session(sess))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));

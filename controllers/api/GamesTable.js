@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Users, Consoles, Games } = require('../../models');
+//const session = require('express-session');
 
 router.get ('/', async function (req,res){
     let resdata = await Games.findAll()
@@ -12,6 +13,7 @@ router.get ('/', async function (req,res){
 //get games by user
 
 router.get ('/:id', async function (req,res){
+   // console.log (req.params.id)
     let resdata = await Games.findAll({where: {user_id: req.params.id}})
     .catch(function (err){
         res.json(err);
