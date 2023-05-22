@@ -2,29 +2,59 @@
 
 {{> myLibraryContent}}
 
-<div class="container-fluid" id="consoles">
-  <div class="row">
-    <div class="col">
-      <h2>Consoles</h2>
-      <ul>
-        {{#each consoles}}
-          <li>Console: {{this.console_name}}</li>
-        {{/each}}
-      </ul>
+<div class="library-dashboard">
+  <h2 class="dashboard-title">My Library</h2>
+
+  <div class="console-list">
+    <h3 class="section-title">Consoles</h3>
+    {{#each consoles}}
+    <div class="console-item">
+      <div class="console-header">
+        <h3 class="console-name">{{this.consoleName}}</h3>
+        <div class="console-actions">
+          <button class="add-game-btn" data-console-id="{{this.consoleId}}">Add Game</button>
+          <button class="view-games-btn" data-console-id="{{this.consoleId}}">View Games</button>
+        </div>
+      </div>
+      <div class="game-list" id="game-list-{{this.consoleId}}">
+        <!-- Game list items will be dynamically populated here -->
+      </div>
     </div>
+    {{/each}}
+  </div>
+
+  <div class="game-list-section">
+    <h3 class="section-title">Games</h3>
+    {{#each games}}
+    <div class="game-item">
+      <p class="game-name">{{this.gameName}}</p>
+    </div>
+    {{/each}}
   </div>
 </div>
 
-<div class="container-fluid" id="games">
-  <div class="row">
-    <div class="col">
-      <h2>Games</h2>
-      <ul>
-        {{#each games}}
-          <li>Game: {{this.game_name}}</li>
-        {{/each}}
-      </ul>
-    </div>
+<!-- Add modal for adding games -->
+<div id="addGameModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Add Game</h3>
+    <form id="addGameForm">
+      <div class="form-group">
+        <label for="gameName">Game Name:</label>
+        <input type="text" id="gameName" name="gameName" placeholder="Enter Game Name" required>
+      </div>
+      <div class="form-group">
+        <label for="consoleSelect">Select Console:</label>
+        <select id="consoleSelect" name="consoleId" required>
+          {{#each consoles}}
+          <option value="{{this.consoleId}}">{{this.consoleName}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
   </div>
 </div>
-<link rel="stylesheet" href="/css/myLib.css" type="text/css" />
+
+<link rel="stylesheet" href="/css/myLib.css" type="text/css">
+<script src="/js/myLib.js"></script>
