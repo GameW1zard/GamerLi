@@ -40,7 +40,7 @@ router.get('/mylibrary', withAuthorization, (req, res) => {
 
 router.get('/login',(req, res) => {
     if (req.session.logged_in === true) {
-        // res.redirect('/mylibrary');
+        res.redirect('/mylibrary');
         console.log('already logged in')
         return;
     }
