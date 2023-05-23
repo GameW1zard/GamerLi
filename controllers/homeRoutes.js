@@ -81,13 +81,13 @@ const data = {
             phone: "",
         },
         {
-            name: "Tomas",
-            age: 30,
+            name: "Tomas Pesti ",
+            age: 26,
             occupation: "Software Developer",
-            bio: "text here",
+            bio: "",
             github: "text here",
-            email: "text here",
-            phone: "text here",
+            email: "https://github.com/tpesti96",
+            phone: "",
         },
         {
             name: "Mohammed Asad Bhimjee",
