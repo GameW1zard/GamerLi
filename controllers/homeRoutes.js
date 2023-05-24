@@ -6,7 +6,7 @@ const Consoles = require('../models/Consoles');
 
 // Route to /homepage
 router.get('/', (req, res) => {
-    res.render('homePage');
+    res.render('homePage1');
 });
 
 // Route to /login
