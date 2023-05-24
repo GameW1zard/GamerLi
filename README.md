@@ -14,9 +14,10 @@ This is a full stack application that allows users to create an account and log 
 - [Questions](#questions)
 
 ## Installation
+It is a simple webpage open it and register then add all the consoles and games you want!
 
 ## Usage
-
+Once you register onder the login page go to my library and click the buttons for adding games and consoles!
 ## License
 Permission to use this application is granted under the MIT license.
 Click on the link for more information: [MIT License Information](https://opensource.org/licenses/MIT)
