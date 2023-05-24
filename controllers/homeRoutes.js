@@ -44,7 +44,7 @@ router.get('/mylibrary', withAuthorization, async (req, res) => {
     }
 
     //console.log(consoles)
-    res.render('mylibrary', {
+    res.render('myLibrary1', {
         logged_in: req.session.logged_in,
          user_id: req.session.user_id,
           user_name: req.session.user_name,
