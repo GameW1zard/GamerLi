@@ -2,10 +2,10 @@
   "name": "group-5-project-2",
   "version": "1.0.0",
   "description": "This is a full stack application that allows users to create an account and log in to a personalized dashboard. The dashboard will allow users to add/delete games to their collection, view their collection, and view their collection statistics. \r ## Table of Contents",
-  "main": "Server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node testserver.js"
   },
   "repository": {
     "type": "git",

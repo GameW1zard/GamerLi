@@ -6,7 +6,7 @@ const Consoles = require('../models/Consoles');
 
 // Route to /homepage
 router.get('/', (req, res) => {
-    res.render('homePage');
+    res.render('homePage1');
 });
 
 // Route to /login
@@ -44,7 +44,7 @@ router.get('/mylibrary', withAuthorization, async (req, res) => {
     }
 
     //console.log(consoles)
-    res.render('mylibrary', {
+    res.render('myLibrary1', {
         logged_in: req.session.logged_in,
          user_id: req.session.user_id,
           user_name: req.session.user_name,
@@ -64,49 +64,49 @@ const data = {
     people: [
         {
             name: "Riven",
-            age: 30,
-            occupation: "Software Developer",
-            bio: "text here",
-            github: "text here",
-            email: "text here",
-            phone: "text here",
-        },
-        {
-            name: "Tomas",
-            age: 30,
-            occupation: "Software Developer",
-            bio: "text here",
-            github: "text here",
-            email: "text here",
-            phone: "text here",
+            age: 24,
+            occupation: "Streamer",
+            bio: "Named after videogames and born to play them",
+            github: "https://github.com/GameW1zard",
+            email: "MrGameW1zardGaming@gmail.com",
+            phone: "555-555-5555",
         },
         {
             name: "Trevor",
             age: 30,
-            occupation: "Software Developer",
-            bio: "text here",
-            github: "text here",
-            email: "text here",
-            phone: "text here",
+            occupation: "",
+            bio: "Coding, Gaming",
+            github: "https://github.com/TpainMcain",
+            email: "trevorwp77@gmail.com",
+            phone: "",
         },
         {
-            name: "Mohammed",
-            age: 30,
+            name: "Tomas Pesti ",
+            age: 26,
             occupation: "Software Developer",
-            bio: "text here",
+            bio: "",
             github: "text here",
-            email: "text here",
-            phone: "text here",
+            email: "https://github.com/tpesti96",
+            phone: "",
         },
         {
-            name: "??",
-            age: 30,
-            occupation: "Unknown",
-            bio: "A mysterious individual.",
-            github: "text here",
-            email: "text here",
-            phone: "text here",
+            name: "Mohammed Asad Bhimjee",
+            age: 33,
+            occupation: "Software Developer",
+            bio: "Chop wood, carry water.",
+            github: "https://github.com/Chartok",
+            email: "m.bhimjee@outlook.com",
+            phone: "",
         },
+        // {
+        //     name: "??",
+        //     age: 30,
+        //     occupation: "Unknown",
+        //     bio: "A mysterious individual.",
+        //     github: "text here",
+        //     email: "text here",
+        //     phone: "text here",
+        // },
     ]
 };
 

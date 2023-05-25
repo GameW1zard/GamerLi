@@ -1,28 +1,26 @@
-<div class="container-fluid" id="consoles">
+
+<div class="container">
   <div class="row">
-    <div class="column">
-      <h2>consoles</h2>
+    <div class="col-sm-4">
+      <h2>Consoles</h2>
       <ul id="consolesul">
         {{#each consoles}}
           <li data-consoleid={{this.id}} data-userid={{this.user_id}}>Console: {{this.console_name}}</li>
         {{/each}}
       </ul>
+      <button data-userid={{user_id}} type="button" class="btn btn-primary" id="addConsole">Add Console</button>
     </div>
-  </div>
-</div>
-<button data-userid={{user_id}} type="button" class="btn btn-primary" id="addConsole">Add Console</button>
-<div class="container-fluid" id="games">
-  <div class="row">
-    <div class="column">
+    
+    <div class="col-sm-8">
       <h2>Games</h2>
       <ul id="gamesul">
         {{!-- {{#each games}}
           <li>Game: {{this.game_name}}</li>
         {{/each}} --}}
       </ul>
+      <button data-userid={{user_id}} data-consoleid="" type="button" class="btn btn-primary" id="addGame">Add Game</button>
     </div>
   </div>
 </div>
-<button data-userid={{user_id}} data-consoleid="" type="button" class="btn btn-primary" id="addGame">Add Game</button>
 <link rel="stylesheet" href="/css/myLib.css" type="text/css" />
 <script src="/js/myLib.js"></script>
